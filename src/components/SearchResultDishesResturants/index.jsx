@@ -18,9 +18,7 @@ function SearchResultDishesResturants({
             dishes.map((item)=>{
               return  disheItems=[...disheItems,...item.dishesList]
             })
-            console.log('bbbbbbbbbbbbbbbbbbbbbb')
-            console.log(disheItems)
-            console.log('affffffffffffff')
+          
         
     const options=[
         {

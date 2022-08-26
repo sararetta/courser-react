@@ -10,14 +10,10 @@ function Home() {
     const [resturants, setResturants] = useState([])
     const [dishes, setDishes] = useState([])
     const [loading, setLoading] = useState(true)
-    const a=fetchApi().catch((e)=>{
-        console.log(e)
-    });
-    console.log(a.then((data)=>{
-        console.log(data)
-    }))
+    console.log(Boolean(query))
+  
     useEffect(() => {
-        if(query){
+        if(Boolean(query)){
             fetchApi(query).then((data)=>{
                 console.log(data)
                 setLoading(true)
@@ -26,14 +22,15 @@ function Home() {
                 setLoading(false)
                
             })
+        }
+        else{
+            setDishes([]);
+            setResturants([])
+            setLoading(true)
 
         }
-        
-    
-    
     }, [query])
-    console.log(dishes)
-    console.log(resturants)
+ 
   return (
     <>
     <Header
@@ -41,7 +38,7 @@ function Home() {
     setQuery={setQuery}
     />
     {
-        loading?<></>:
+        loading==true || query==''?<></>:
         <StyledSearchResult>
             <SearchResult
              query={query} 
