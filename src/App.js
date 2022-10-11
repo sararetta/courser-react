@@ -1,12 +1,19 @@
+import React from "react";
+import Main from "./components/MainComponent";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { ConfigureStore } from "./redux/configureStore";
 
-import {CartProvider} from './provider/cart';
-import Home from './components/Home/index'
+const store = ConfigureStore();
 function App() {
   return (
-    <CartProvider>
-        <Home/>
-    </CartProvider>
-
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Main />
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
